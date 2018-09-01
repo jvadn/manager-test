@@ -17,7 +17,7 @@ public class TestAction extends BaseAction {
     @RequestMapping("/test")
     @ResponseBody
     public String test() {
-        logger.info("測試【{}】","test");
+        logger.info("測試[{}]","test");
         return JSONObject.toJSONString(api.getNameAndAge("0"));
     }
 
