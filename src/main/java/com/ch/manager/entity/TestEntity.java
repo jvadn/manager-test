@@ -2,6 +2,9 @@ package com.ch.manager.entity;
 
 import java.io.Serializable;
 
+/**
+ * 测试实体类
+ */
 public class TestEntity implements Serializable {
 
     private String id;
