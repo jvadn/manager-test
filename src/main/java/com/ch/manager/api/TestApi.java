@@ -1,9 +1,9 @@
 package com.ch.manager.api;
 
-import com.ch.manager.entity.TestEntity;
+import com.ch.manager.entity.MtTest;
 
 public interface TestApi {
 
-    TestEntity getNameAndAge(String id);
+    MtTest getNameAndAge(String id);
 
 }

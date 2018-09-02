@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class TestAction extends BaseAction {
 
@@ -16,9 +18,16 @@ public class TestAction extends BaseAction {
 
     @RequestMapping("/test")
     @ResponseBody
-    public String test() {
+    public String test(HttpServletRequest req) {
         logger.info("測試【{}】","test");
-        return JSONObject.toJSONString(api.getNameAndAge("0"));
+        return "test_success";
+    }
+
+    @RequestMapping("/test-index")
+    public String testIndex(HttpServletRequest req) {
+        logger.info("測試【{}】","test");
+        req.setAttribute("test",api.getNameAndAge("0"));
+        return "html/testHtml";
     }
 
 }
