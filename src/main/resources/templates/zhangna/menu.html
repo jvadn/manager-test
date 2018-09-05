@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="/utils/ajaxUtil.js"></script>
+</head>
+<body>
+
+<p class="ti">执行中</p>
+
+<div class="hidden">
+    <p class="url">${url}}</p>
+    <p class="menus">${menus}</p>
+</div>
+
+</body>
+
+<script>
+    var json = {
+        "button": [
+            {
+                "name": "xiaozhu",
+                "type": "view",
+                "url": "http://www.baidu.com"
+            },
+            {
+                "name": "gaobaiqingshu",
+                "sub_button": [
+                    {
+                        "name":"xiangyaodegandong",
+                        "type": "view",
+                        "url": "http://www.360.cn"
+                    },
+                    {
+                        "name":"gaobaiqingshu",
+                        "type": "view",
+                        "url": "http://www.360.cn"
+                    }
+                ]
+            },
+            {
+                "name": "xiaona",
+                "sub_button": [
+                    {
+                        "name":"xiaonadexinxi",
+                        "type": "view",
+                        "url": "http://www.baidu.com"
+                    },
+                    {
+                        "name":"xiaonadenanpiao",
+                        "type": "view",
+                        "url": "http://www.baidu.com"
+                    }
+                ]
+            }
+        ]
+    };
+    $(function () {
+        var url = $('.url').text();
+        var menus = $('.menus').text();
+        try {
+            // AjaxUtil.request.post(url, json);
+            $('.ti').text('执行成功');
+        } catch (e) {
+            $('.ti').text('执行失败：' + e);
+        }
+    });
+</script>
+
+</html>

@@ -46,5 +46,9 @@ public class CollectionUtil {
         return !isEmpty(coll);
     }
 
+    public static boolean isEmpty(Object[] objs) {
+        return objs == null || objs.length < 1;
+    }
+
 
 }

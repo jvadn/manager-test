@@ -107,18 +107,22 @@ public class StringUtil {
         return false;
     }
 
-    public static boolean isBlank(Object str) {
-        if (str == null || str.toString().trim().length() < 1) {
+    public static boolean isBlank(Object... str) {
+        if (CollectionUtil.isEmpty(str)) {
             return true;
+        }
+        for (Object obj : str) {
+            if (obj == null || obj.toString().trim().length() < 1) {
+                return true;
+            }
         }
         return false;
     }
 
-    public static boolean isNotBlank(Object str) {
-        return !isBlank(str);
-    }
-
-    public static boolean isNotBlankAll(Object... str) {
+    public static boolean isNotBlank(Object... str) {
+        if (CollectionUtil.isEmpty(str)) {
+            return false;
+        }
         for (Object obj : str) {
             if (isBlank(obj)) {
                 return false;

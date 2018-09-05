@@ -1,6 +1,5 @@
 package com.ch.manager.entity;
 
-import org.beetl.sql.core.annotatoin.AssignID;
 import org.beetl.sql.core.annotatoin.Table;
 
 import java.io.Serializable;

@@ -4,9 +4,13 @@ package com.ch.manager.config;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ch.manager.api.UserApi;
+import com.ch.manager.filter.UserLoginFilter;
+import com.ch.manager.utils.CollectionUtil;
 import org.beetl.core.resource.ClasspathResourceLoader;
 import org.beetl.ext.spring.BeetlGroupUtilConfiguration;
 import org.beetl.ext.spring.BeetlSpringViewResolver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -50,17 +54,15 @@ public class WebConfig extends WebMvcConfigurerAdapter {
      * 权限验证
      * @return
      */
-//    @Bean
+    @Bean
     public FilterRegistrationBean permFilterRegistrationPermBean(){
         FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-//        registrationBean.setName("ermissionValidationFilter");
-//        PermissionValidationFilter ermissionValidationFilter=new PermissionValidationFilter();
-//        registrationBean.setFilter(ermissionValidationFilter);
-//        registrationBean.setOrder(1);
-//        List<String> urlList = new ArrayList<String>();
-//        urlList.add("/*");
-//        registrationBean.setUrlPatterns(urlList);
-//        registrationBean.addInitParameter("excludedPages", permExcludedPages);
+        registrationBean.setName("userLoginFilter");
+        registrationBean.setFilter(new UserLoginFilter());
+        registrationBean.setOrder(1);
+        List<String> urlList = new ArrayList<String>();
+        urlList.add("/*");
+        registrationBean.setUrlPatterns(urlList);
         return registrationBean;
     }
 
