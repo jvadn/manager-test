@@ -2,10 +2,70 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>个人资料</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="/dist/css/zui.css" type="text/css"/>
+    <script src="/jquery/jquery.js"></script>
+    <script src="/dist/js/zui.js"></script>
+    <script src="/utils/ajaxUtil.js"></script>
+
+    <style>
+        img {
+            width: 280px;
+            height: 320px;
+        }
+
+        .top-div {
+            height: 360px;
+        }
+
+        .image-p span {
+            width: 200px;
+        }
+
+        .name {
+            width: 45% !important;
+        }
+
+        .buttom-div span {
+            width: 110px;
+        }
+    </style>
 </head>
 <body>
-<p>test</p>
+<div>
+    <div class="top-div mar-5">
+        <img class="f-l img-thumbnail" src="/images/chenhao/head.jpg"/>
+        <div class="image-p f-l mar-l-5 mar-t-1">
+            <p><span class="dis-l-b">姓名：</span>@{chenhao.name}</p>
+            <p><span class="dis-l-b">微信：</span>@{chenhao.wxName}</p>
+            <p><span class="dis-l-b">年龄：</span>@{chenhao.age}</p>
+            <p><span class="dis-l-b">籍贯：</span>@{chenhao.place}}</p>
+            <p><span class="dis-l-b">出生日期：</span>@{chenhao.birth}</p>
+            <p><span class="dis-l-b">联系方式：</span>@{chenhao.}</p>
+        </div>
+    </div>
+
+    <div class="buttom-div mar-5">
+        <p>
+            <span class="dis-l-b name"><span class="dis-l-b">职业：</span>@{chenhao.}</span>
+            <span class="dis-l-b name"><span class="dis-l-b">公司：</span>@{chenhao.}</span>
+        </p>
+        <p>
+            <span class="dis-l-b name"><span class="dis-l-b">住址：</span>@{chenhao.}</span>
+            <span class="dis-l-b name"><span class="dis-l-b">学校：</span>@{chenhao.}</span>
+        </p>
+        <p><span class="dis-l-b">性格：</span>@{chenhao.}</p>
+        <p><span class="dis-l-b">想去：</span>@{chenhao.}</p>
+        <p><span class="dis-l-b">爱吃：</span>@{chenhao.}</p>
+        <p><span class="dis-l-b">想玩：</span>@{chenhao.}</p>
+        <p><span class="dis-l-b">想看：</span>@{chenhao.}</p>
+        <p><span class="dis-l-b">个性说明：</span>@{chenhao.}</p>
+        <p><span class="dis-l-b">兴趣爱好：</span>@{chenhao.}</p>
+    </div>
+
+
+</div>
 
 </body>
 </html>

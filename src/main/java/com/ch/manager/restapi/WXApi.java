@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
@@ -58,8 +59,13 @@ public class WXApi extends AbstractFileAction {
             if (wxMessage != null && wxMessage.getMsgType().equals(EnumWxMsgType.EVENT.getValue())) {
                 logger.info("关注公众号，openId:[{}]", wxMessage.getFromUserName());
                 logger.info("获取用户信息：[{}]", JSONObject.toJSONString(user));
-                if (user != null) {
+                if (user != null && StringUtil.isNotBlank(user.getOpenId())) {
                     wx = new WXMessage(wxMessage, run(user, EnumWxMsgType.EVENT.getValue()));
+                    if (UserContext.checkOpenId(user.getOpenId())) {
+                        Cookie cookie = new Cookie("openId", user.getOpenId());
+                        cookie.setMaxAge(365 * 24 * 60 * 60);
+                        rep.addCookie(cookie);
+                    }
                 }
             } else if (wxMessage.getMsgType().equals("text")) {
                 wx = new WXMessage(wxMessage);
@@ -100,7 +106,7 @@ public class WXApi extends AbstractFileAction {
 
     @Override
     public String getFilePath() {
-        logger.info("文件路径：{}",checkFilePath);
+        logger.info("文件路径：{}", checkFilePath);
         return checkFilePath;
     }
 }

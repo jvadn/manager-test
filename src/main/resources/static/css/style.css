@@ -1,0 +1,24 @@
+p {
+    font-size: 5ex;
+    font-family: NSimSun;
+}
+
+.mar-5 {
+    margin: 5ex;
+}
+
+.mar-l-5 {
+    margin-left: 5ex;
+}
+
+.mar-t-1 {
+    margin-top: 1ex;
+}
+
+.f-l {
+    float: left;
+}
+
+.dis-l-b{
+    display: inline-block;
+}
