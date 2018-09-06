@@ -2,6 +2,7 @@ package com.ch.manager;
 
 import com.ch.manager.api.UserApi;
 import com.ch.manager.entity.UserContext;
+import com.ch.manager.filter.UserLoginFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -24,13 +25,12 @@ public class TestApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("------------------------>启动完成，配置为：" + env.getProperty("spring.profiles.active"));
-        UserContext.setChenhao(userApi.queryByRemark("chenhao"));
-        UserContext.setZhangna(userApi.queryByRemark("zhangna"));
+        userApi.updateContext();
         if (UserContext.getChenhao() != null) {
-            System.out.println("陈豪信息加载完成。。。");
+            System.out.println(UserContext.getChenhao().getRemark()+"信息加载完成。。。");
         }
         if (UserContext.getZhangna() != null) {
-            System.out.println("张娜信息加载完成。。。");
+            System.out.println(UserContext.getZhangna().getRemark()+"张娜信息加载完成。。。");
         }
     }
 }

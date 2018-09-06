@@ -1,24 +1,82 @@
-p {
-    font-size: 5ex;
+p, span, div {
+    font-size: 12px;
     font-family: NSimSun;
 }
 
-.mar-5 {
-    margin: 5ex;
+.pad-10 {
+    padding:10px;
 }
 
-.mar-l-5 {
-    margin-left: 5ex;
+.pad-20 {
+    padding:10px;
 }
 
-.mar-t-1 {
-    margin-top: 1ex;
+.pad-0-im{
+    padding:0px !important;
+}
+
+.mar-t-15{
+    margin-top:15px;
+}
+
+.mar-t-20{
+    margin-top:20px;
+}
+
+.mar-l-10{
+    margin-left: 10px;
+}
+
+.mar-t-20{
+    margin-top:20px;
+}
+
+.mar-t-0{
+    margin-top: 0px;
+}
+
+.mar-b-0{
+    margin-bottom: 0px;
+}
+
+.mar-b-0-im{
+    margin-bottom: 0px !important;
 }
 
 .f-l {
     float: left;
 }
 
-.dis-l-b{
+.f-r{
+    float: right;
+}
+
+.dis-l-b {
     display: inline-block;
 }
+
+.w50{
+    width:50% !important;
+}
+
+.cen-in-cen {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+}
+
+.tab{
+    display: table;
+}
+
+.tab-c{
+    display: table-cell;
+}
+
+.layui-layer{
+    max-width: 300px;
+}
+

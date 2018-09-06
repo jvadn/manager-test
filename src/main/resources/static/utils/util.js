@@ -407,6 +407,8 @@ var AlertUtil = {
                 layer.close(la);
             }
         });
+        $('.layui-layer-btn1').addClass('hidden');
+        $('.layui-layer-setwin').addClass('hidden');
     },
     layerOpen: function ($view, hw, callback, title) {
         var la = layer.open({

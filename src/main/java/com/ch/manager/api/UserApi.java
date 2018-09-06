@@ -14,4 +14,6 @@ public interface UserApi {
 
     MtUser update(MtUser mtUser);
 
+    void updateContext();
+
 }

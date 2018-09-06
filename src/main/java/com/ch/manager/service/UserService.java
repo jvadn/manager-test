@@ -3,6 +3,7 @@ package com.ch.manager.service;
 import com.ch.manager.api.UserApi;
 import com.ch.manager.dao.UserDao;
 import com.ch.manager.entity.MtUser;
+import com.ch.manager.entity.UserContext;
 import com.ch.manager.service.Base.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,5 +43,11 @@ public class UserService extends BaseService implements UserApi {
     public MtUser update(MtUser mtUser) {
         dao.updateTemplateById(mtUser);
         return mtUser;
+    }
+
+    @Override
+    public void updateContext() {
+        UserContext.setChenhao(queryByRemark("chenhao"));
+        UserContext.setZhangna(queryByRemark("zhangna"));
     }
 }

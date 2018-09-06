@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>噫~好难听！</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="/dist/css/zui.css" type="text/css"/>
+    <link rel="stylesheet" href="/layer/mobile/need/layer.css" type="text/css"/>
+    <script src="/jquery/jquery.js"></script>
+    <script src="/dist/js/zui.js"></script>
+    <script src="/utils/ajaxUtil.js"></script>
+    <script src="/utils/util.js"></script>
+    <script src="/layer/layer.js"></script>
+
+    <style>
+        .cen {
+            position: absolute;
+            top: 50%;
+            transform: translate(0%, -50%);
+            padding: 0px 20px;
+            font-family: NSimSun;
+            font-size: 3rem;
+            width: 100%;
+        }
+
+        #inputEmailExample3, #inputEmailExample1 {
+            height: 50px;
+            padding-left: 120px !important;
+        }
+
+        .div-in {
+            height: 50px !important;
+            line-height: 50px !important;
+            width: 120px !important;
+            padding-right: 0px !important;
+        }
+
+        .ch-name, .zn-name {
+            text-align: right;
+        }
+
+        button {
+            height: 50px !important;
+            top: -50px;
+            width: 70px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="cen">
+    <p class="hidden chenhaoJson">${chenhaoJson}</p>
+    <p class="hidden zhangnaJson">${zhangnaJson}</p>
+
+    <div class="alert alert-success mar-b-0-im">
+        保存修改，会在第一时间显示最新昵称！由于当前是非认证订阅号，所以菜单和微信文章的昵称暂时不变，不过${chenhao.nickName}会在收到的第一时间修改哦！
+    </div>
+    <hr class="mar-t-0">
+    <div class="input-control has-label-left ch-name has-icon-right" style="height:70px;">
+        <input id="inputEmailExample3" type="text" class="form-control" placeholder="" maxlength="8">
+        <div for="inputEmailExample3" class="input-control-label-left div-in text-right">${chenhao.nickName}:</div>
+        <span class="input-group-btn">
+            <button class="btn btn-info ch-btn" type="button">保存</button>
+        </span>
+    </div>
+
+    <div class="input-control has-label-left zn-name has-icon-right" style="height:50px;">
+        <input id="inputEmailExample1" type="text" class="form-control" placeholder="" maxlength="8">
+        <div for="inputEmailExample1" class="input-control-label-left div-in text-right">${zhangna.nickName}:</div>
+        <span class="input-group-btn">
+            <button class="btn btn-info zn-btn" type="button">保存</button>
+        </span>
+    </div>
+    <hr>
+</div>
+
+<script>
+    $(function () {
+
+        $('.ch-btn').on('click', function () {
+            var value = $.trim($('#inputEmailExample3').val());
+            if (!value) {
+                AlertUtil.defaultAlert("昵称不能为空哦！");
+                return;
+            }
+            var chenhao = JSON.parse($('.chenhaoJson').text());
+            chenhao.nickName = value;
+            AjaxUtil.request.post('/user/update', chenhao, function () {
+                window.location.href = window.location.href;
+            });
+        });
+
+        $('.zn-btn').on('click', function () {
+            var value = $.trim($('#inputEmailExample1').val());
+            if (!value) {
+                AlertUtil.defaultAlert("昵称不能为空哦！");
+                return;
+            }
+            var zhangna = JSON.parse($('.zhangnaJson').text());
+            zhangna.nickName = value;
+            AjaxUtil.request.post('/user/update', zhangna, function () {
+                window.location.href = window.location.href;
+            });
+        });
+    });
+</script>
+
+</body>
+</html>

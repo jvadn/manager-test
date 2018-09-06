@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>哼~打死你！</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="/dist/css/zui.css" type="text/css"/>
+    <link rel="stylesheet" href="/layer/mobile/need/layer.css" type="text/css"/>
+    <script src="/jquery/jquery.js"></script>
+    <script src="/dist/js/zui.js"></script>
+    <script src="/utils/ajaxUtil.js"></script>
+    <script src="/utils/util.js"></script>
+    <script src="/layer/layer.js"></script>
+</head>
+
+<style>
+    .cen {
+        position: absolute;
+        top: 50%;
+        transform: translate(0%, -50%);
+        padding: 0px 20px;
+        font-family: NSimSun;
+        font-size: 3rem;
+        width: 100%;
+    }
+</style>
+<body>
+
+<div class="pad-20 cen">
+
+    <p class="hidden chenhao-nick-name">${chenhao.nickName}</p>
+    <p class="hidden zhangna-nick-name">${zhangna.nickName}</p>
+
+    <div>
+        <select class="type form-control" style="margin-bottom: 5px;">
+            <option value="1">哼~打死你！</option>
+            <option value="2">${zhangna.nickName}不开心</option>
+            <option value="3">${zhangna.nickName}真开心</option>
+            <option value="0">其他</option>
+        </select>
+        <input type="text" class="form-control hidden" maxlength="50" placeholder="请输入具体类型">
+    </div>
+    <div style="margin-top: 15px;">
+        <textarea class="form-control" maxlength="1000" rows="5" placeholder="请开始你的描述"></textarea>
+    </div>
+    <div style="text-align: center;">
+        <button class="btn btn-primary" style="background-color: cornflowerblue;" type="button">提交</button>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.type').on('change', function () {
+            if ($(this).val() == 0) {
+                $('input').removeClass('hidden');
+            } else if (!$('input').hasClass('hidden')) {
+                $('input').addClass('hidden');
+            }
+        });
+
+        $('.btn').on('click', function () {
+            var typeVal = $('input').val();
+            var type = $('.type').val();
+            if (type == 0 && !typeVal) {
+                AlertUtil.defaultAlert('选择其他类型后，需要填写具体类型哦！');
+                return;
+            }
+            var value = $('textarea').val();
+            if (!value) {
+                AlertUtil.defaultAlert('请输入描述！');
+                return;
+            }
+            var remark = {
+                type: type,
+                simple: typeVal,
+                desc: value
+            };
+            AjaxUtil.request.post('/remark/add', remark, function () {
+                var chenhaoNickName = $('.chenhao-nick-name').text();
+                var zhangnaNickName = $('.zhangna-nick-name').text();
+                var msg = '';
+                if (type == 1) {
+                    msg = chenhaoNickName + '被打疼了ヽ(*。>Д<)o゜，正在反思中...一定会给' + zhangnaNickName + '一个交代哒！';
+                } else if (type == 2) {
+                    msg = chenhaoNickName + '好难过，' + zhangnaNickName + '不开心，' + chenhaoNickName + '也跟着不开心了...不过有' + chenhaoNickName + '陪' + zhangnaNickName + '一起不开心，' + zhangnaNickName + '的不开心就少了一半啦！所以，一切都会好起来的(^▽^ )';
+                } else if (type == 3) {
+                    msg = zhangnaNickName + '好开心，有' + chenhaoNickName + '陪' + zhangnaNickName + '一起开心，' + zhangnaNickName + '就会更加开心了呢！'
+                } else {
+                    msg = chenhaoNickName + '正在努力理解中，' + zhangnaNickName + '怎么说都是对哒！';
+                }
+                AlertUtil.layerConfirm(msg, function () {
+                    window.location.href = window.location.href;
+                });
+            });
+
+        });
+    });
+</script>
+
+</body>
+</html>

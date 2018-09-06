@@ -3,10 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>错误</title>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+
+    <style>
+        .err{
+            position: absolute;
+            top: 50%;
+            transform: translate(0%, -50%);
+            padding: 0px 50px;
+            font-family: NSimSun;
+            font-size:3rem;
+        }
+    </style>
 </head>
 <body>
-<div>此公众号仅限于${chenhao.nickName}和${zhangna.nickName}使用，由于您未获取${chenhao.nickName}的授权，无法访问！</div>
-<div>如果您已获取授权，则授权已过期，请联系${chenhao.nickName}重新获取授权！</div>
+<div class="err">
+    <div>此公众号仅限于${chenhao.nickName}和${zhangna.nickName}使用，由于您未获取${chenhao.nickName}的授权，无法访问！</div>
+    <div>如果您已获取授权，则授权已过期，请联系${chenhao.nickName}重新获取授权！</div>
+</div>
 
 </body>
 </html>

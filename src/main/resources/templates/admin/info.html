@@ -2,66 +2,90 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>个人资料</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <title>绝密</title>
     <link rel="stylesheet" href="/css/style.css" type="text/css"/>
     <link rel="stylesheet" href="/dist/css/zui.css" type="text/css"/>
     <script src="/jquery/jquery.js"></script>
     <script src="/dist/js/zui.js"></script>
-    <script src="/utils/ajaxUtil.js"></script>
 
     <style>
         img {
-            width: 280px;
-            height: 320px;
+            width: 120px;
         }
 
         .top-div {
-            height: 360px;
+            height: 200px;
+            background-color: white;
         }
 
         .image-p span {
-            width: 200px;
+            width: 50px;
         }
 
         .name {
             width: 45% !important;
         }
 
-        .buttom-div span {
-            width: 110px;
+        .cancer-div, .buttom-div {
+            background-color: white;
+        }
+
+        .cancer-div span {
+            width: 50px;
+        }
+
+        .buttom-div span{
+            width: 70px;
+        }
+
+        body {
+            background-color: #EEEEEE;
         }
     </style>
 </head>
 <body>
 <div>
-    <div class="top-div mar-5">
-        <img class="f-l img-thumbnail" src="/images/chenhao/head.jpg"/>
-        <div class="image-p f-l mar-l-5 mar-t-1">
-            <p><span class="dis-l-b">姓名：</span>@{chenhao.name}</p>
-            <p><span class="dis-l-b">微信：</span>@{chenhao.wxName}</p>
-            <p><span class="dis-l-b">年龄：</span>@{chenhao.age}</p>
-            <p><span class="dis-l-b">籍贯：</span>@{chenhao.place}}</p>
-            <p><span class="dis-l-b">出生日期：</span>@{chenhao.birth}</p>
-            <p><span class="dis-l-b">联系方式：</span>@{chenhao.}</p>
+    <div class="top-div pad-10">
+        <img class="f-l img-thumbnail pad-0-im" src="/images/chenhao/head.jpg"/>
+        <div class="image-p f-l mar-l-10">
+            <p><span class="dis-l-b">姓名：</span>${chenhao.name}</p>
+            <p><span class="dis-l-b">微信：</span>${chenhao.wxName}</p>
+            <p><span class="dis-l-b">年龄：</span>${chenhao.age}</p>
+            <p><span class="dis-l-b">生日：</span>${chenhao.birth,dateFormat="yyyy-MM-dd"}</p>
+            <p><span class="dis-l-b">手机：</span>${chenhao.phone}</p>
+            <p><span class="dis-l-b">籍贯：</span>${chenhao.place}</p>
         </div>
     </div>
 
-    <div class="buttom-div mar-5">
+    <div class="cancer-div mar-t-15 pad-10">
         <p>
-            <span class="dis-l-b name"><span class="dis-l-b">职业：</span>@{chenhao.}</span>
-            <span class="dis-l-b name"><span class="dis-l-b">公司：</span>@{chenhao.}</span>
+            <span class="dis-l-b name"><span class="dis-l-b">职业：</span>${chenhao.zhiYe}</span>
+            <span class="dis-l-b w50"><span class="dis-l-b">学历：</span>${chenhao.education}</span>
         </p>
-        <p>
-            <span class="dis-l-b name"><span class="dis-l-b">住址：</span>@{chenhao.}</span>
-            <span class="dis-l-b name"><span class="dis-l-b">学校：</span>@{chenhao.}</span>
-        </p>
-        <p><span class="dis-l-b">性格：</span>@{chenhao.}</p>
-        <p><span class="dis-l-b">想去：</span>@{chenhao.}</p>
-        <p><span class="dis-l-b">爱吃：</span>@{chenhao.}</p>
-        <p><span class="dis-l-b">想玩：</span>@{chenhao.}</p>
-        <p><span class="dis-l-b">想看：</span>@{chenhao.}</p>
-        <p><span class="dis-l-b">个性说明：</span>@{chenhao.}</p>
-        <p><span class="dis-l-b">兴趣爱好：</span>@{chenhao.}</p>
+        <p><span class="dis-l-b name"><span class="dis-l-b">住址：</span>${chenhao.address}</span></p>
+        <p><span class="dis-l-b">性格：</span>${chenhao.xingGe}</p>
+    </div>
+
+    <div class="buttom-div mar-t-15 pad-10">
+        <div class="tab">
+            <span class="tab-c">想去：</span>${chenhao.wannaGo}
+        </div>
+        <div class="tab">
+            <span class="tab-c">爱吃：</span>${chenhao.wannaEat}
+        </div>
+        <div class="tab">
+            <span class="tab-c">想玩：</span>${chenhao.wannaPlay}
+        </div>
+        <div class="tab">
+            <span class="tab-c">想看：</span>${chenhao.wannaSee}
+        </div>
+        <div class="tab">
+            <span class="tab-c">兴趣爱好：</span>${chenhao.hobby}
+        </div>
+        <div class="tab">
+            <span class="tab-c">个性说明：</span>${chenhao.desc}
+        </div>
     </div>
 
 

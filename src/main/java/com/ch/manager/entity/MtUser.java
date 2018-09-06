@@ -7,9 +7,8 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Table(name = "mt_user")
-public class MtUser implements Serializable {
+public class MtUser extends BaseEntity implements Serializable {
 
-    private String id;
     private String remark;
     private String type;
     private String name;
@@ -31,15 +30,6 @@ public class MtUser implements Serializable {
 
     public MtUser(String openId){
         this.setOpenId(openId);
-    }
-
-    @AssignID("uuid")
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
     }
 
     public String getRemark() {
