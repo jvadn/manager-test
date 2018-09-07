@@ -4,42 +4,50 @@ p, span, div {
 }
 
 .pad-10 {
-    padding:10px;
+    padding: 10px;
 }
 
 .pad-20 {
-    padding:10px;
+    padding: 10px;
 }
 
-.pad-0-im{
-    padding:0px !important;
+.pad-0-im {
+    padding: 0px !important;
 }
 
-.mar-t-15{
-    margin-top:15px;
+.mar-t-5 {
+    margin-top: 5px;
 }
 
-.mar-t-20{
-    margin-top:20px;
+.mar-t-10 {
+    margin-top: 10px;
 }
 
-.mar-l-10{
+.mar-t-15 {
+    margin-top: 15px;
+}
+
+.mar-t-20 {
+    margin-top: 20px;
+}
+
+.mar-l-10 {
     margin-left: 10px;
 }
 
-.mar-t-20{
-    margin-top:20px;
+.mar-t-20 {
+    margin-top: 20px;
 }
 
-.mar-t-0{
+.mar-t-0 {
     margin-top: 0px;
 }
 
-.mar-b-0{
+.mar-b-0 {
     margin-bottom: 0px;
 }
 
-.mar-b-0-im{
+.mar-b-0-im {
     margin-bottom: 0px !important;
 }
 
@@ -47,7 +55,7 @@ p, span, div {
     float: left;
 }
 
-.f-r{
+.f-r {
     float: right;
 }
 
@@ -55,8 +63,18 @@ p, span, div {
     display: inline-block;
 }
 
-.w50{
-    width:50% !important;
+.w50 {
+    width: 50% !important;
+}
+
+.cen {
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+    padding: 0px 20px;
+    font-family: NSimSun;
+    font-size: 3rem;
+    width: 100%;
 }
 
 .cen-in-cen {
@@ -68,15 +86,27 @@ p, span, div {
     -moz-transform: translate(-50%, -50%);
 }
 
-.tab{
+.tab {
     display: table;
 }
 
-.tab-c{
+.tab-c {
     display: table-cell;
 }
 
-.layui-layer{
+.layui-layer {
     max-width: 300px;
+}
+
+.pos-ab {
+    position: absolute;
+}
+
+.pos-re {
+    position: relative;
+}
+
+.w100{
+    width:100%;
 }
 

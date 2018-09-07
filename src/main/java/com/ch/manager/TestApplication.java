@@ -30,7 +30,7 @@ public class TestApplication implements CommandLineRunner {
             System.out.println(UserContext.getChenhao().getRemark()+"信息加载完成。。。");
         }
         if (UserContext.getZhangna() != null) {
-            System.out.println(UserContext.getZhangna().getRemark()+"张娜信息加载完成。。。");
+            System.out.println(UserContext.getZhangna().getRemark()+"信息加载完成。。。");
         }
     }
 }

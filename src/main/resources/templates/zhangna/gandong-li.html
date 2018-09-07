@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>领导指示</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="/dist/css/zui.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/layer/mobile/need/layer.css" type="text/css"/>
+    <script src="/jquery/jquery.js"></script>
+    <script src="/dist/js/zui.js"></script>
+    <script src="/utils/ajaxUtil.js"></script>
+    <script src="/utils/util.js"></script>
+    <script src="/layer/layer.js"></script>
+</head>
+<body type="${type}" chenhao-nick-name="${chenhao.nickName}" zhangna-nick-name="${zhangna.nickName}">
+
+<%
+var value = '';
+var ti = '请领导指示';
+var btn = '提交';
+if(gandong! != null){
+value = gandong.desc;
+}
+if(type == '0'){
+btn = '河东狮吼：扯着'+chenhao.nickName+'的耳朵大声告诉'+chenhao.nickName;
+ti = zhangna.nickName+'喜欢的男票是什么样的呢？';
+}
+
+%>
+
+<div class="pad-20 cen">
+    <div style="margin-top: 15px;">
+        <textarea class="form-control" maxlength="1000" rows="5" placeholder="${ti}">${value}</textarea>
+    </div>
+    <div style="text-align: center;">
+        <button class="btn btn-primary" style="background-color: cornflowerblue;width: 100%;margin-top: 10px;"
+                type="button">${btn}
+        </button>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('button').on('click', function () {
+            var type = $('body').attr('type');
+            var zhangnaNickName = $('body').attr('zhangna-nick-name');
+            var value = $('textarea').val();
+            if (!value) {
+                AlertUtil.defaultAlert(type == 0 ? '什么都要求都没有哦!' + zhangnaNickName + '可不是那么好追哒！' : '请' + zhangnaNickName + '领导指示');
+                return;
+            }
+            AjaxUtil.request.post_param('/zhangna/gandong-add', {type: type, value: value}, function () {
+                if (type == 0) {
+                    var chenhaoNickName = $('body').attr('chenhao-nick-name');
+                    AlertUtil.layerConfirm(chenhaoNickName + '已经记在心里了，一定会努力做到哒！', function () {
+                        window.location.href = window.location.href;
+                    });
+                } else {
+                    AlertUtil.layerConfirm('保存成功', function () {
+                        window.location.href = '/zhangna/gandong';
+                    });
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

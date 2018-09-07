@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>想要的感动</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="/dist/css/zui.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/layer/mobile/need/layer.css" type="text/css"/>
+    <script src="/jquery/jquery.js"></script>
+    <script src="/dist/js/zui.js"></script>
+    <script src="/utils/ajaxUtil.js"></script>
+    <script src="/utils/util.js"></script>
+    <script src="/layer/layer.js"></script>
+
+</head>
+<body style="background-color: #EEEEEE;">
+<div>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <a href="#" value="1">想要的感动：</a>
+            <img style="width:15px;float:right;" src="/icon/right.png"/>
+        </li>
+        <li class="list-group-item">
+            <a href="#" value="2">想要的浪漫：</a>
+            <img style="width:15px;float:right;" src="/icon/right.png"/>
+        </li>
+        <li class="list-group-item">
+            <a href="#" value="3">关于告白情书,请领导${zhangna.nickName}指示：</a>
+            <img style="width:15px;float:right;" src="/icon/right.png"/>
+        </li>
+    </ul>
+</div>
+
+<script>
+
+    $(function () {
+        $('.list-group-item').on('click', function () {
+            var value = $(this).find('a').attr('value');
+            window.location.href = '/zhangna/gandong-li/' + value;
+        });
+    });
+
+</script>
+
+</body>
+</html>
