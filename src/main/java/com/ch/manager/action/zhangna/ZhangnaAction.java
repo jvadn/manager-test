@@ -6,13 +6,12 @@ import com.ch.manager.entity.MtGandong;
 import com.ch.manager.entity.MtUserInfo;
 import com.ch.manager.entity.UserContext;
 import com.ch.manager.exception.ExceptionEnum;
+import com.ch.manager.utils.DateUtil;
 import com.ch.manager.utils.Message;
+import com.ch.manager.utils.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
@@ -69,12 +68,22 @@ public class ZhangnaAction {
 
     @RequestMapping("/nvwang")
     public String info(HttpServletRequest req) {
-        MtUserInfo userInfo = new MtUserInfo();
-        userInfo.setName("45678");
-        userInfo.setBirth(new Date());
-//        req.setAttribute("user", userInfoApi.queryByUserId(UserContext.getZhangna().getId()));
-        req.setAttribute("user", userInfo);
+        req.setAttribute("user", userInfoApi.queryByUserId(UserContext.getZhangna().getId()));
         return "zhangna/nvwang";
+    }
+
+    @RequestMapping("/add-user-info")
+    @ResponseBody
+    public Message addUserInfo(@RequestBody MtUserInfo userInfo) {
+        try {
+            userInfoApi.removeByUserId(userInfo.getUserId());
+            userInfo.init();
+            userInfoApi.addUserInfo(userInfo);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Message.warn(ExceptionEnum.SYSTEM_ERROR);
+        }
+        return Message.SUCCESS;
     }
 
 }

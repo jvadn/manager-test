@@ -24,13 +24,7 @@ public class TestApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        System.out.println("------------------------>启动完成，配置为：" + env.getProperty("spring.profiles.active"));
         userApi.updateContext();
-        if (UserContext.getChenhao() != null) {
-            System.out.println(UserContext.getChenhao().getRemark()+"信息加载完成。。。");
-        }
-        if (UserContext.getZhangna() != null) {
-            System.out.println(UserContext.getZhangna().getRemark()+"信息加载完成。。。");
-        }
+        System.out.println("------------------------>启动完成，配置为：" + env.getProperty("spring.profiles.active"));
     }
 }

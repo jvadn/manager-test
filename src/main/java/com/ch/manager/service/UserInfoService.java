@@ -17,4 +17,14 @@ public class UserInfoService extends BaseService implements UserInfoApi {
     public MtUserInfo queryByUserId(String userId) {
         return dao.templateOne(new MtUserInfo(userId));
     }
+
+    @Override
+    public void addUserInfo(MtUserInfo userInfo) {
+        dao.insertTemplate(userInfo);
+    }
+
+    @Override
+    public void removeByUserId(String userId) {
+        dao.removeByUserId(userId);
+    }
 }

@@ -30,6 +30,12 @@ public class MtUserInfo extends BaseEntity {
 
     public MtUserInfo(String userId){
         this.setUserId(userId);
+        this.setIsDelete("0");
+    }
+
+    public void init(){
+        this.setIsDelete("0");
+        this.setCreateDate(new Date());
     }
 
     public String getUserId() {

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>test</title>
+    <title>叫我女王大人</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <link rel="stylesheet" href="/css/style.css" type="text/css"/>
@@ -20,7 +20,7 @@
         }
 
         .top-div {
-            height: 230px;
+            height: 160px;
             background-color: white;
         }
 
@@ -49,10 +49,10 @@
         }
     </style>
 </head>
-<body>
+<body user-id="${zhangna.id}">
 
 <%
-var age = '18';
+var age = '';
 var phone = '';
 var place = '';
 var zhiYe = '';
@@ -107,37 +107,25 @@ desc = user.desc;
 
 <div>
     <div class="top-div pad-10">
-        <img class="f-l img-thumbnail pad-0-im" src="./images/zhangna/z_head.jpg"/>
-        <div class="image-p f-l mar-l-10">
+        <div>
+            <img class="f-l img-thumbnail pad-0-im" style="height: 130px;" src="/images/zhangna/z_head.jpg"/>
+        </div>
+        <div class="image-p f-l mar-l-10" style="width: 55%;">
             <p><span class="dis-l-b">姓名：</span>${zhangna.name}</p>
             <p><span class="dis-l-b">微信：</span>${zhangna.wxName}</p>
 
             <div class="tab">
                 <p class="tab-c"><span class="dis-l-b">年龄：</span></p>
                 <div class="has-warning">
-                    <input class="form-control only-num" dec="0" type="text" maxlength="3" value="${age}">
+                    <input class="form-control only-num" name="age" dec="0" type="text" maxlength="3" value="${age}">
                 </div>
             </div>
 
             <div class="tab mar-t-5">
                 <p class="tab-c"><span class="dis-l-b">生日：</span></p>
                 <div class="has-warning">
-                    <input class="form-control" type="text"
+                    <input class="form-control" type="text" name="birth"
                            value="<%if(user.birth! != null){%>${user.birth,dateFormat='yyyy-MM-dd'}<%}%>">
-                </div>
-            </div>
-
-            <div class="tab mar-t-5">
-                <p class="tab-c"><span class="dis-l-b">手机：</span></p>
-                <div class="has-warning">
-                    <input class="form-control" type="text" value="${phone}">
-                </div>
-            </div>
-
-            <div class="tab mar-t-5">
-                <p class="tab-c"><span class="dis-l-b">籍贯：</span></p>
-                <div class="has-warning">
-                    <input class="form-control" type="text" value="${place}">
                 </div>
             </div>
 
@@ -145,27 +133,40 @@ desc = user.desc;
     </div>
 
     <div class="cancer-div mar-t-15 pad-10">
+
+        <div class="tab mar-t-5">
+            <p class="tab-c"><span class="dis-l-b">手机：</span></p>
+            <div class="has-warning">
+                <input class="form-control only-num" dec="0" type="text" name="phone" value="${phone}">
+            </div>
+
+            <p class="tab-c"><span class="dis-l-b mar-l-10">籍贯：</span></p>
+            <div class="has-warning">
+                <input class="form-control" type="text" name="place" value="${place}">
+            </div>
+        </div>
+
         <div class="tab mar-t-5">
             <p class="tab-c"><span class="dis-l-b">职业：</span></p>
             <div class="has-warning">
-                <input class="form-control" type="text" value="${zhiYe}">
+                <input class="form-control" type="text" name="zhiYe" value="${zhiYe}">
             </div>
 
             <p class="tab-c"><span class="dis-l-b mar-l-10">学历：</span></p>
             <div class="has-warning">
-                <input class="form-control" type="text" value="${education}">
+                <input class="form-control" type="text" name="education" value="${education}">
             </div>
         </div>
         <div class="tab mar-t-5 w100">
             <p class="tab-c" style="width: 40px;"><span class="dis-l-b">住址：</span></p>
             <div class="has-warning">
-                <input class="form-control" type="text" value="${address}">
+                <input class="form-control" type="text" name="address" value="${address}">
             </div>
         </div>
         <div class="tab mar-t-5 w100">
             <p class="tab-c" style="width: 40px;"><span class="dis-l-b">性格：</span></p>
             <div class="has-warning">
-                <input class="form-control" type="text" value="${xingGe}">
+                <input class="form-control" type="text" name="xingGe" value="${xingGe}">
             </div>
         </div>
     </div>
@@ -174,28 +175,28 @@ desc = user.desc;
         <div class="tab mar-t-5 w100">
             <p class="tab-c" style="width: 40px;"><span class="dis-l-b">想去：</span></p>
             <div class="has-warning">
-                <textarea class="form-control" rows="3">${wannaGo}</textarea>
+                <textarea class="form-control" name="wannaGo" rows="3">${wannaGo}</textarea>
             </div>
         </div>
 
         <div class="tab mar-t-5 w100">
             <p class="tab-c" style="width: 40px;"><span class="dis-l-b">想吃：</span></p>
             <div class="has-warning">
-                <textarea class="form-control" rows="3">${wannaEat}</textarea>
+                <textarea class="form-control" name="wannaEat" rows="3">${wannaEat}</textarea>
             </div>
         </div>
 
         <div class="tab mar-t-5 w100">
             <p class="tab-c" style="width: 40px;"><span class="dis-l-b">想玩：</span></p>
             <div class="has-warning">
-                <textarea class="form-control" rows="3">${wannaPlay}</textarea>
+                <textarea class="form-control" name="wannaPlay" rows="3">${wannaPlay}</textarea>
             </div>
         </div>
 
         <div class="tab mar-t-5 w100">
             <p class="tab-c" style="width: 40px;"><span class="dis-l-b">想看：</span></p>
             <div class="has-warning">
-                <textarea class="form-control" rows="3">${wannaSee}</textarea>
+                <textarea class="form-control" name="wannaSee" rows="3">${wannaSee}</textarea>
             </div>
         </div>
 
@@ -204,16 +205,60 @@ desc = user.desc;
     <div class="end-div mar-t-15 pad-10">
         <p>兴趣爱好：</p>
         <div class="has-warning">
-            <textarea class="form-control" rows="3">${hobby}</textarea>
+            <textarea class="form-control" name="hobby" rows="3">${hobby}</textarea>
         </div>
 
         <p class="mar-t-10">个性说明：</p>
         <div class="has-warning">
-            <textarea class="form-control" rows="3">${desc}</textarea>
+            <textarea class="form-control" name="desc" rows="3">${desc}</textarea>
+        </div>
+
+        <div style="text-align: center;padding-bottom: 20px;">
+            <button class="btn btn-primary" style="background-color: cornflowerblue;width: 100%;margin-top: 10px;"
+                    type="button">这就是你的女王大人
+            </button>
         </div>
     </div>
 
+
 </div>
+
+<script>
+    $(function () {
+        $('.btn').on('click', function () {
+            var userInfo = {};
+            $('body').find('input').each(function (i, dom) {
+                userInfo[$(dom).attr('name')] = $(dom).val();
+            });
+            $('body').find('textarea').each(function (i, dom) {
+                userInfo[$(dom).attr('name')] = $(dom).val();
+            });
+            userInfo['userId'] = $('body').attr('user-id');
+
+            if (userInfo.birth) {
+                try {
+                    var reg = /^(\d{4})-(\d{2})-(\d{2})$/;
+                    if (!reg.test(userInfo.birth)){
+                        AlertUtil.defaultAlert('生日格式不正确');
+                        return;
+                    }
+                    var date = new Date(userInfo.birth + ' 00:00:00');
+                    userInfo.birth = date;
+                } catch (e) {
+                    AlertUtil.defaultAlert('生日格式不正确');
+                    return;
+                }
+            }
+
+            AjaxUtil.request.post('/zhangna/add-user-info', userInfo, function () {
+                AlertUtil.layerConfirm('保存成功！', function () {
+                    window.location.href = window.location.href;
+                });
+            });
+
+        });
+    });
+</script>
 
 </body>
 </html>

@@ -2,10 +2,12 @@ package com.ch.manager.filter;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ch.manager.entity.UserContext;
+import com.ch.manager.utils.IdUtil;
 
 import javax.servlet.*;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class UserLoginFilter implements Filter {
@@ -23,7 +25,14 @@ public class UserLoginFilter implements Filter {
         } else {
             setAttrbite(req);
             String openId = getOpenIdByCookie(req);
-            if (1 == 1 || openId != null && UserContext.checkOpenId(openId)) {
+            if(openId == null){
+                HttpServletResponse rep = (HttpServletResponse)servletResponse;
+                Cookie cookie = new Cookie("openId", "941122");
+                cookie.setMaxAge(365 * 24 * 60 * 60);
+                rep.addCookie(cookie);
+                openId = "941122";
+            }
+            if (openId != null && UserContext.checkOpenId(openId)) {
                 filterChain.doFilter(req, servletResponse);
             } else {
                 RequestDispatcher dispatch = servletRequest.getRequestDispatcher("error");
