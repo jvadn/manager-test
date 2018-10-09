@@ -15,6 +15,7 @@ public class RemarkService extends BaseService implements RemarkApi {
 
     @Override
     public void add(MtRemark remark) {
+        remark.init();
         dao.insertTemplate(remark);
     }
 }

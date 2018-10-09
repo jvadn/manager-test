@@ -49,5 +49,6 @@ public class UserService extends BaseService implements UserApi {
     public void updateContext() {
         UserContext.setChenhao(queryByRemark("chenhao"));
         UserContext.setZhangna(queryByRemark("zhangna"));
+        UserContext.setDengqing(queryByRemark("dengqing"));
     }
 }

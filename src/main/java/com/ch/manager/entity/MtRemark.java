@@ -2,13 +2,19 @@ package com.ch.manager.entity;
 
 import org.beetl.sql.core.annotatoin.Table;
 
+import java.util.Date;
+
 @Table(name = "mt_remark")
-public class MtRemark extends BaseEntity{
+public class MtRemark extends BaseEntity {
 
     private String userId;
     private String type;
     private String simple;
     private String desc;
+
+    public void init() {
+        this.setCreateDate(new Date());
+    }
 
     public String getUserId() {
         return userId;

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>叫我女王大人</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="/dist/css/zui.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/layer/mobile/need/layer.css" type="text/css"/>
+    <script src="/jquery/jquery.js"></script>
+    <script src="/dist/js/zui.js"></script>
+    <script src="/utils/ajaxUtil.js"></script>
+    <script src="/utils/util.js"></script>
+    <script src="/layer/layer.js"></script>
+
+    <style>
+        img {
+            width: 100px;
+        }
+
+        .top-div {
+            height: 160px;
+            background-color: white;
+        }
+
+        .image-p span {
+            width: 50px;
+        }
+
+        .cancer-div, .buttom-div, .end-div {
+            background-color: white;
+        }
+
+        .cancer-div span {
+            width: 40px;
+        }
+
+        .buttom-div span {
+            width: 40px;
+        }
+
+        .end-div span {
+            width: 40px;
+        }
+
+        body {
+            background-color: #EEEEEE;
+        }
+    </style>
+</head>
+<body user-id="${dengqing.id}">
+
+<%
+var age = '';
+var phone = '';
+var place = '';
+var zhiYe = '';
+var education = '';
+var address = '';
+var xingGe = '';
+var wannaGo = '';
+var wannaEat = '';
+var wannaPlay = '';
+var wannaSee = '';
+var hobby = '';
+var desc = '';
+
+if(user! != null){
+if(user.age != null){
+age = user.age;
+}
+if(user.place != null){
+place = user.place;
+}
+if(user.phone != null){
+phone = user.phone;
+}
+if(user.zhiYe != null){
+zhiYe = user.zhiYe;
+}
+if(user.education != null){
+education = user.education;
+}
+if(user.address != null){
+address = user.address;
+}
+if(user.xingGe != null){
+xingGe = user.xingGe;
+}
+if(user.wannaGo != null){
+wannaGo = user.wannaGo;
+}
+if(user.wannaEat != null){
+wannaEat = user.wannaEat;
+}
+if(user.wannaPlay != null){
+wannaPlay = user.wannaPlay;
+}
+if(user.wannaSee != null){
+wannaSee = user.wannaSee;
+}
+if(user.hobby != null){
+hobby = user.hobby;
+}
+if(user.desc != null){
+desc = user.desc;
+}
+
+}
+
+%>
+
+<div>
+    <div class="top-div pad-10">
+        <div>
+            <img class="f-l img-thumbnail pad-0-im" style="height: 130px;" src="/images/dengqing/z_head.jpg"/>
+        </div>
+        <div class="image-p f-l mar-l-10" style="width: 55%;">
+            <p><span class="dis-l-b">姓名：</span>${dengqing.name}</p>
+            <p><span class="dis-l-b">微信：</span>${dengqing.wxName}</p>
+
+            <div class="tab">
+                <p class="tab-c"><span class="dis-l-b">年龄：</span></p>
+                <div class="has-warning">
+                    <input class="form-control only-num" name="age" dec="0" type="text" maxlength="3" value="${age}">
+                </div>
+            </div>
+
+            <div class="tab mar-t-5">
+                <p class="tab-c"><span class="dis-l-b">生日：</span></p>
+                <div class="has-warning">
+                    <input class="form-control" type="text" name="birth" placeholder="1994-07-07"
+                           value="<%if(user.birth! != null){%>${user.birth,dateFormat='yyyy-MM-dd'}<%}%>">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="cancer-div mar-t-15 pad-10">
+
+        <div class="tab mar-t-5">
+            <p class="tab-c"><span class="dis-l-b">手机：</span></p>
+            <div class="has-warning">
+                <input class="form-control only-num" dec="0" type="text" name="phone" value="${phone}">
+            </div>
+
+            <!--<p class="tab-c"><span class="dis-l-b mar-l-10">籍贯：</span></p>
+            <div class="has-warning">
+                <input class="form-control" type="text" name="place" maxlength="50" value="${place}">
+            </div>-->
+            <p class="tab-c"><span class="dis-l-b mar-l-10">职业：</span></p>
+            <div class="has-warning">
+                <input class="form-control" type="text" maxlength="50" name="zhiYe" value="${zhiYe}">
+            </div>
+        </div>
+
+        <div class="tab mar-t-5">
+            <!--<p class="tab-c"><span class="dis-l-b">职业：</span></p>
+            <div class="has-warning">
+                <input class="form-control" type="text" maxlength="50" name="zhiYe" value="${zhiYe}">
+            </div>-->
+
+            <!--<p class="tab-c"><span class="dis-l-b mar-l-10">学历：</span></p>
+            <div class="has-warning">
+                <input class="form-control" type="text" maxlength="50" name="education" value="${education}">
+            </div>-->
+        </div>
+        <div class="tab mar-t-5 w100">
+            <p class="tab-c" style="width: 40px;"><span class="dis-l-b">住址：</span></p>
+            <div class="has-warning">
+                <input class="form-control" type="text" maxlength="50" name="address" value="${address}">
+            </div>
+        </div>
+        <div class="tab mar-t-5 w100">
+            <p class="tab-c" style="width: 40px;"><span class="dis-l-b">性格：</span></p>
+            <div class="has-warning">
+                <input class="form-control" type="text" maxlength="50" name="xingGe" value="${xingGe}">
+            </div>
+        </div>
+    </div>
+
+    <div class="buttom-div mar-t-15 pad-10">
+        <div class="tab mar-t-5 w100">
+            <p class="tab-c" style="width: 40px;"><span class="dis-l-b">想去：</span></p>
+            <div class="has-warning">
+                <textarea class="form-control" name="wannaGo" maxlength="500" rows="3">${wannaGo}</textarea>
+            </div>
+        </div>
+
+        <div class="tab mar-t-5 w100">
+            <p class="tab-c" style="width: 40px;"><span class="dis-l-b">想吃：</span></p>
+            <div class="has-warning">
+                <textarea class="form-control" name="wannaEat" maxlength="500" rows="3">${wannaEat}</textarea>
+            </div>
+        </div>
+
+        <div class="tab mar-t-5 w100">
+            <p class="tab-c" style="width: 40px;"><span class="dis-l-b">想玩：</span></p>
+            <div class="has-warning">
+                <textarea class="form-control" name="wannaPlay" maxlength="500" rows="3">${wannaPlay}</textarea>
+            </div>
+        </div>
+
+        <div class="tab mar-t-5 w100">
+            <p class="tab-c" style="width: 40px;"><span class="dis-l-b">想看：</span></p>
+            <div class="has-warning">
+                <textarea class="form-control" name="wannaSee" maxlength="500" rows="3">${wannaSee}</textarea>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="end-div mar-t-15 pad-10">
+        <p>兴趣爱好：</p>
+        <div class="has-warning">
+            <textarea class="form-control" name="hobby" maxlength="500" rows="3">${hobby}</textarea>
+        </div>
+
+        <p class="mar-t-10">想要的男票：</p>
+        <div class="has-warning">
+            <textarea class="form-control" name="desc" maxlength="500" rows="3">${desc}</textarea>
+        </div>
+
+        <div style="text-align: center;padding-bottom: 20px;">
+            <button class="btn btn-primary" style="background-color: cornflowerblue;width: 100%;margin-top: 10px;"
+                    type="button">这就是你的女王大人!
+            </button>
+        </div>
+    </div>
+
+
+</div>
+
+<script>
+    $(function () {
+        $('.btn').on('click', function () {
+            var userInfo = {};
+            $('body').find('input').each(function (i, dom) {
+                userInfo[$(dom).attr('name')] = $(dom).val();
+            });
+            $('body').find('textarea').each(function (i, dom) {
+                userInfo[$(dom).attr('name')] = $(dom).val();
+            });
+            userInfo['userId'] = $('body').attr('user-id');
+
+            if (userInfo.birth) {
+                try {
+                    var reg = /^(\d{4})-(\d{2})-(\d{2})$/;
+                    if (!reg.test(userInfo.birth)){
+                        AlertUtil.defaultAlert('生日格式不正确');
+                        return;
+                    }
+                    var date = new Date(userInfo.birth + ' 00:00:00');
+                    userInfo.birth = date;
+                } catch (e) {
+                    AlertUtil.defaultAlert('生日格式不正确');
+                    return;
+                }
+            }
+
+            AjaxUtil.request.post('/dengqing/add-user-info', userInfo, function () {
+                AlertUtil.layerConfirm('保存成功！', function () {
+                    window.location.href = window.location.href;
+                });
+            });
+
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -30,7 +30,7 @@ public class UserLoginFilter implements Filter {
                 Cookie cookie = new Cookie("openId", "941122");
                 cookie.setMaxAge(365 * 24 * 60 * 60);
                 rep.addCookie(cookie);
-                openId = "941122";
+                openId = "940707";
             }
             if (openId != null && UserContext.checkOpenId(openId)) {
                 filterChain.doFilter(req, servletResponse);
@@ -59,6 +59,8 @@ public class UserLoginFilter implements Filter {
         req.setAttribute("chenhaoJson", JSONObject.toJSONString(UserContext.getChenhao()));
         req.setAttribute("zhangna", UserContext.getZhangna());
         req.setAttribute("zhangnaJson", JSONObject.toJSONString(UserContext.getZhangna()));
+        req.setAttribute("dengqing", UserContext.getDengqing());
+        req.setAttribute("dengqingJson", JSONObject.toJSONString(UserContext.getDengqing()));
     }
 
     @Override
